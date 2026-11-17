@@ -1,6 +1,6 @@
 = Workshop - Ansible na prática: O simples que resolve
 
-Bem-vindo ao workshop de Ansible do IFPB! Neste workshop voce vai aprender a usar o Ansible para automatizar a instalação e configuração do nginx em uma máquina virtual CentOS Stream 10.
+Bem-vindo ao workshop de Ansible da Facisa! Neste workshop voce vai aprender a usar o Ansible para automatizar a instalação e configuração do nginx em uma máquina virtual CentOS Stream 10.
 
 == O Que Este Workshop Cobre
 
