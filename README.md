@@ -23,7 +23,7 @@ Verifique que a VM 1 consegue acessar a VM 2 via rede (ping, SSH).
 
 ```bash
 git clone <REPO_URL>
-cd workshop-ansible-ifpb
+cd workshop-ansible-facisa
 ```
 
 ### 2. Configure o inventario
@@ -118,7 +118,7 @@ Acesse http://localhost:8080. O site e reconstruido automaticamente ao alterar a
 ```bash
 npm install
 npx antora site.yml
-# Abra www/workshop-ansible-ifpb/index.html
+# Abra www/workshop-ansible-facisa/index.html
 ```
 
 ### Deploy automatico
@@ -130,7 +130,7 @@ O repositorio inclui um workflow GitHub Actions (`.github/workflows/gh-pages.yml
 ## Estrutura do Projeto
 
 ```
-workshop-ansible-ifpb/
+workshop-ansible-facisa/
   .github/workflows/
     gh-pages.yml                     # CI/CD para GitHub Pages
   ansible.cfg                        # Configuracao do Ansible

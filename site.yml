@@ -1,7 +1,7 @@
 site:
   title: "Workshop - Ansible na prática: O simples que resolve"
-  url: https://iurygregory.github.io/workshop-ansible-ifpb
-  start_page: workshop-ansible-ifpb::index.adoc
+  url: https://iurygregory.github.io/workshop-ansible-facisa
+  start_page: workshop-ansible-facisa::index.adoc
 
 content:
   sources:

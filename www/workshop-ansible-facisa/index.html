@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Personalizando o nginx :: Workshop - Ansible na prática: O simples que resolve</title>
-    <link rel="canonical" href="https://iurygregory.github.io/workshop-ansible-ifpb/workshop-ansible-ifpb/04-customization.html">
-    <link rel="prev" href="03-playbook.html">
+    <title>Workshop - Ansible na prática: O simples que resolve :: Workshop - Ansible na prática: O simples que resolve</title>
+    <link rel="canonical" href="https://iurygregory.github.io/workshop-ansible-facisa/workshop-ansible-facisa/index.html">
+    <link rel="next" href="01-setup.html">
     <meta name="generator" content="Antora 3.1.15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
       <span class="navbar-item navbar-logo">
         <img src="_/img/logo-demo-platform.svg" alt="Red Hat Demo Platform" class="navbar-logo-img">
       </span>
-      <a class="navbar-item site-title" target="_blank" href="https://iurygregory.github.io/workshop-ansible-ifpb">Workshop - Ansible na prática: O simples que resolve</a>
+      <a class="navbar-item site-title" target="_blank" href="https://iurygregory.github.io/workshop-ansible-facisa">Workshop - Ansible na prática: O simples que resolve</a>
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
@@ -31,7 +31,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="workshop-ansible-ifpb" data-version="">
+<div class="nav-container" data-component="workshop-ansible-facisa" data-version="">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -40,7 +40,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="index.html">Bem-vindo</a>
   </li>
 </ul>
@@ -58,7 +58,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="03-playbook.html">Executando o Playbook</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="04-customization.html">Personalizando o nginx</a>
   </li>
 </ul>
@@ -85,155 +85,142 @@
 <main class="article" id="content">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link"></a>
+  <a href="index.html" class="home-link is-current"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Workshop - Ansible na prática: O simples que resolve</a></li>
-    <li>Workshop</li>
-    <li><a href="04-customization.html">Personalizando o nginx</a></li>
+    <li><a href="index.html">Bem-vindo</a></li>
   </ul>
 </nav>
 </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Personalizando o nginx</h1>
+<h1 class="page">Workshop - Ansible na prática: O simples que resolve</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Agora vem a parte divertida! Vamos alterar a versao e a porta do nginx e observar como a pagina web muda.</p>
+<p>Bem-vindo ao workshop de Ansible do IFPB! Neste workshop voce vai aprender a usar o Ansible para automatizar a instalação e configuração do nginx em uma máquina virtual CentOS Stream 10.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_cenario_1_porta_padrao_80_versao_padrao"><a class="anchor" href="#_cenario_1_porta_padrao_80_versao_padrao"></a>Cenario 1: Porta Padrao (80) + Versao Padrao</h2>
+<h2 id="_o_que_este_workshop_cobre"><a class="anchor" href="#_o_que_este_workshop_cobre"></a>O que este Workshop Cobre</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Conceitos básicos de Ansible (inventario, playbooks, roles)</p>
+</li>
+<li>
+<p>Instalacao e configuracao do nginx via Ansible</p>
+</li>
+<li>
+<p>Controle de versão do nginx (repositório padrao vs. oficial)</p>
+</li>
+<li>
+<p>Configuração de porta customizada</p>
+</li>
+<li>
+<p>Interação com firewalld e SELinux</p>
+</li>
+<li>
+<p>Verificação automática de acessibilidade</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_para_quem_é_este_workshop"><a class="anchor" href="#_para_quem_é_este_workshop"></a>Para Quem é Este Workshop ?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Este e o estado inicial. A pagina mostra a imagem <code>default.png</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ansible-playbook playbooks/site.yml</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Acesse: <code><a href="http://&lt;IP_DA_VM2&gt;:80" class="bare">http://&lt;IP_DA_VM2&gt;:80</a></code></p>
-</div>
-<div class="paragraph">
-<p>Resultado esperado: imagem padrao.</p>
+<p>Estudantes que desejam aprender automação de infraestrutura com Ansible. Não é necessario conhecimento previo de Ansible.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_cenario_2_porta_customizada_versao_padrao"><a class="anchor" href="#_cenario_2_porta_customizada_versao_padrao"></a>Cenario 2: Porta Customizada + Versao Padrao</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Mude a porta para 8080:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ansible-playbook playbooks/site.yml -e nginx_port=8080</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Acesse: <code><a href="http://&lt;IP_DA_VM2&gt;:8080" class="bare">http://&lt;IP_DA_VM2&gt;:8080</a></code></p>
-</div>
-<div class="paragraph">
-<p>Resultado esperado: mensagem de aviso pedindo para instalar a versao mais recente do nginx.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>O playbook configura automaticamente o SELinux e o firewall para permitir a nova porta.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cenario_3_porta_customizada_versao_mais_recente"><a class="anchor" href="#_cenario_3_porta_customizada_versao_mais_recente"></a>Cenario 3: Porta Customizada + Versao Mais Recente</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Agora ative o repositorio oficial do nginx.org e use uma porta customizada:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ansible-playbook playbooks/site.yml -e nginx_enable_official_repo=true -e nginx_port=8080</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Acesse: <code><a href="http://&lt;IP_DA_VM2&gt;:8080" class="bare">http://&lt;IP_DA_VM2&gt;:8080</a></code></p>
-</div>
-<div class="paragraph">
-<p>Resultado esperado: mensagem de parabens com a imagem <code>latest.png</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_resumo_do_comportamento_da_pagina"><a class="anchor" href="#_resumo_do_comportamento_da_pagina"></a>Resumo do Comportamento da Pagina</h2>
+<h2 id="_estrutura_do_workshop"><a class="anchor" href="#_estrutura_do_workshop"></a>Estrutura do Workshop</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
+<col style="width: 14.2857%;">
 <col style="width: 28.5714%;">
-<col style="width: 28.5714%;">
-<col style="width: 42.8572%;">
+<col style="width: 57.1429%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Porta</th>
-<th class="tableblock halign-left valign-top">Versao nginx</th>
-<th class="tableblock halign-left valign-top">Pagina</th>
+<th class="tableblock halign-left valign-top">Modulo</th>
+<th class="tableblock halign-left valign-top">Titulo</th>
+<th class="tableblock halign-left valign-top">Descricao</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Padrao (80)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Qualquer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Imagem <code>default.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="01-setup.html" class="xref page">Preparando o Ambiente</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuração das VMs e instalação do Ansible</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Customizada</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nao e a mais recente</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mensagem pedindo atualizacao</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="02-inventory.html" class="xref page">Inventario Ansible</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Como configurar o inventario para conectar na segunda VM</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Customizada</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mais recente</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Imagem <code>latest.png</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="03-playbook.html" class="xref page">Executando o Playbook</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Executando o playbook principal para instalar o nginx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="04-customization.html" class="xref page">Personalizando o nginx</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alterando versão e porta do nginx e observando o resultado</p></td>
 </tr>
 </tbody>
 </table>
-<div class="imageblock"><div class="mermaid content" style=" ">graph TD
-    A{"Porta customizada?"} -->|Nao| B["Mostra default.png"]
-    A -->|Sim| C{"nginx e a versao mais recente?"}
-    C -->|Nao| D["Mostra aviso de atualizacao"]
-    C -->|Sim| E["Mostra latest.png"]</div></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_desafio"><a class="anchor" href="#_desafio"></a>Desafio</h2>
+<h2 id="_ambiente"><a class="anchor" href="#_ambiente"></a>Ambiente</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Tente as seguintes combinacoes e observe o resultado:</p>
+<p>Cada estudante tem acesso a duas máquinas virtuais:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Volte para a porta padrao mantendo o repositorio oficial</p>
-</li>
-<li>
-<p>Use a porta 9090 sem o repositorio oficial</p>
-</li>
-<li>
-<p>Use a porta 443 com o repositorio oficial</p>
-</li>
-</ol>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">VM</th>
+<th class="tableblock halign-left valign-top">Funcao</th>
+<th class="tableblock halign-left valign-top">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VM 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Control Node</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Onde voce executa os comandos Ansible</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VM 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Managed Node</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O servidor que vai rodar o nginx</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock"><div class="mermaid content" style=" ">graph LR
+    A["VM1 - Control Node"] -->|SSH| B["VM2 - Managed Node"]
+    B -->|"porta 80/custom"| C["Browser do Host"]</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_como_usar_este_material"><a class="anchor" href="#_como_usar_este_material"></a>Como Usar Este Material</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Este workshop é auto-guiado. Siga os modulos na ordem listada na barra de navegação a esquerda. Cada módulo contém instruções passo-a-passo e exemplos práticos.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -243,7 +230,7 @@
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Voce pode editar as variaveis diretamente no arquivo <code>inventory/group_vars/webservers.yml</code> em vez de passar pela linha de comando com <code>-e</code>.</p>
+<p>Use o menu de navegação a esquerda para avancar entre os módulos. Os botões "Previous" e "Next" no final de cada página tambem ajudam na navegação.</p>
 </div>
 </td>
 </tr>
@@ -252,7 +239,7 @@
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="03-playbook.html" class="query-params-link">Executando o Playbook</a></span>
+  <span class="next"><a href="01-setup.html" class="query-params-link">Preparando o Ambiente</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

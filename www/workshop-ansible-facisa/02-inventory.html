@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Preparando o Ambiente :: Workshop - Ansible na prática: O simples que resolve</title>
-    <link rel="canonical" href="https://iurygregory.github.io/workshop-ansible-ifpb/workshop-ansible-ifpb/01-setup.html">
-    <link rel="prev" href="index.html">
-    <link rel="next" href="02-inventory.html">
+    <title>Inventário Ansible :: Workshop - Ansible na prática: O simples que resolve</title>
+    <link rel="canonical" href="https://iurygregory.github.io/workshop-ansible-facisa/workshop-ansible-facisa/02-inventory.html">
+    <link rel="prev" href="01-setup.html">
+    <link rel="next" href="03-playbook.html">
     <meta name="generator" content="Antora 3.1.15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
       <span class="navbar-item navbar-logo">
         <img src="_/img/logo-demo-platform.svg" alt="Red Hat Demo Platform" class="navbar-logo-img">
       </span>
-      <a class="navbar-item site-title" target="_blank" href="https://iurygregory.github.io/workshop-ansible-ifpb">Workshop - Ansible na prática: O simples que resolve</a>
+      <a class="navbar-item site-title" target="_blank" href="https://iurygregory.github.io/workshop-ansible-facisa">Workshop - Ansible na prática: O simples que resolve</a>
     </div>
     <div id="topbar-nav" class="navbar-menu">
       <div class="navbar-end">
@@ -32,7 +32,7 @@
   </nav>
 </header>
 <div class="body">
-<div class="nav-container" data-component="workshop-ansible-ifpb" data-version="">
+<div class="nav-container" data-component="workshop-ansible-facisa" data-version="">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -50,10 +50,10 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Workshop</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="01-setup.html">Preparando o Ambiente</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="02-inventory.html">Inventario Ansible</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -91,117 +91,149 @@
   <ul>
     <li><a href="index.html">Workshop - Ansible na prática: O simples que resolve</a></li>
     <li>Workshop</li>
-    <li><a href="01-setup.html">Preparando o Ambiente</a></li>
+    <li><a href="02-inventory.html">Inventario Ansible</a></li>
   </ul>
 </nav>
 </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Preparando o Ambiente</h1>
+<h1 class="page">Inventário Ansible</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Antes de começar, precisamos garantir que o ambiente esta pronto.</p>
+<p>O inventário define quais máquinas o Ansible vai gerenciar e como se conectar a elas.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_pré_requisitos"><a class="anchor" href="#_pré_requisitos"></a>Pré-requisitos</h2>
+<h2 id="_o_que_e_um_inventario"><a class="anchor" href="#_o_que_e_um_inventario"></a>O que e um Inventario?</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>O inventário e um arquivo que lista os hosts (máquinas) que o Ansible vai configurar. Ele pode ser um simples arquivo INI ou um arquivo YAML.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configurando_o_inventario"><a class="anchor" href="#_configurando_o_inventario"></a>Configurando o Inventario</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Edite o arquivo <code>inventory/hosts.ini</code> com os dados da sua VM 2.</p>
+</div>
+<div class="sect2">
+<h3 id="_opcao_a_autenticacao_por_chave_ssh_recomendado"><a class="anchor" href="#_opcao_a_autenticacao_por_chave_ssh_recomendado"></a>Opcao A: Autenticacao por Chave SSH (recomendado)</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[webservers]
+vm2 ansible_host=192.168.56.11 ansible_user=seu_usuario ansible_ssh_private_key_file=~/.ssh/id_rsa</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_opcao_b_autenticacao_por_senha"><a class="anchor" href="#_opcao_b_autenticacao_por_senha"></a>Opcao B: Autenticacao por Senha</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[webservers]
+vm2 ansible_host=192.168.56.11 ansible_user=seu_usuario ansible_ssh_pass=sua_senha</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Substitua <code>192.168.56.11</code> pelo IP real da sua VM 2, e <code>seu_usuario</code> / <code>sua_senha</code> pelas credenciais corretas.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_variáveis_do_grupo"><a class="anchor" href="#_variáveis_do_grupo"></a>Variáveis do Grupo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As variáveis do grupo <code>webservers</code> ficam em <code>inventory/group_vars/webservers.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">nginx_enable_official_repo: false
+nginx_port: 80</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Essas variáveis controlam:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Acesso SSH da VM 1 (control node) para a VM 2 (managed node)</p>
+<p><code>nginx_enable_official_repo</code>&#8201;&#8212;&#8201;se <code>false</code>, instala o nginx do repositório padrão do CentOS. Se <code>true</code>, adiciona o repositorio oficial do nginx.org.</p>
 </li>
 <li>
-<p>CentOS Stream 10 em ambas as VMs</p>
+<p><code>nginx_port</code>&#8201;&#8212;&#8201;porta em que o nginx vai escutar. Padrao: <code>80</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configurando_ssh_nas_vms"><a class="anchor" href="#_configurando_ssh_nas_vms"></a>Configurando SSH nas VMs</h2>
+<h2 id="_testando_o_inventário"><a class="anchor" href="#_testando_o_inventário"></a>Testando o Inventário</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Conecte-se na VM e execute:</p>
+<p>Verifique se o Ansible consegue se conectar:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ssh-keygen
-ssh-copy-id</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_instalando_o_ansible_na_vm_1"><a class="anchor" href="#_instalando_o_ansible_na_vm_1"></a>Instalando o Ansible na VM 1</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Conecte-se na VM 1 e execute:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">sudo dnf install -y ansible-core</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ansible webservers -m ping -K</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Verifique a instalação:</p>
+<p>Voce deve ver uma resposta <code>SUCCESS</code> em verde:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ansible --version</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">vm2 | SUCCESS =&gt; {
+    "changed": false,
+    "ping": "pong"
+}</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_clonando_o_repositório"><a class="anchor" href="#_clonando_o_repositório"></a>Clonando o Repositório</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/iurygregory/workshop-ansible-ifpb.git
-cd workshop-ansible-ifpb</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_testando_a_conectividade"><a class="anchor" href="#_testando_a_conectividade"></a>Testando a Conectividade</h2>
-<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Verifique se a VM 1 consegue acessar a VM 2:</p>
+<p>Se o comando falhar, verifique:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ping &lt;IP_DA_VM2&gt;</code></pre>
+<div class="ulist">
+<ul>
+<li>
+<p>O IP esta correto?</p>
+</li>
+<li>
+<p>As credenciais estão corretas?</p>
+</li>
+<li>
+<p>O SSH esta acessível na VM 2?</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="paragraph">
-<p>Teste o acesso SSH:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ssh &lt;usuario&gt;@&lt;IP_DA_VM2&gt;</code></pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>Para saber os IPs de cada máquina virtual utilize o comando abaixo:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ip -c a</code></pre>
-</div>
-</div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="index.html" class="query-params-link">Bem-vindo</a></span>
-  <span class="next"><a href="02-inventory.html" class="query-params-link">Inventario Ansible</a></span>
+  <span class="prev"><a href="01-setup.html" class="query-params-link">Preparando o Ambiente</a></span>
+  <span class="next"><a href="03-playbook.html" class="query-params-link">Executando o Playbook</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
