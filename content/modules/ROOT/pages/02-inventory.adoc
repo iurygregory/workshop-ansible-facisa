@@ -1,0 +1,69 @@
+= Inventário Ansible
+
+O inventário define quais máquinas o Ansible vai gerenciar e como se conectar a elas.
+
+== O que é um Inventário?
+
+O inventário é um arquivo que lista os hosts (máquinas) que o Ansible vai configurar. Ele pode ser um simples arquivo INI ou um arquivo YAML.
+
+== Configurando o Inventário
+
+Edite o arquivo `inventory/hosts.ini` com os dados da sua VM 2.
+
+=== Autenticação por Chave SSH (recomendado)
+
+[source,ini]
+----
+[webservers]
+<nome VM2> ansible_host=<IP VM2> ansible_user=<usuário> 
+----
+
+[IMPORTANT]
+====
+Escolha uma das opções  e atribua as informações corretas aos campos que estão entre `<` e `>`.
+Remova os símbolos `<` e `>`. 
+Exemplo: `<nome VM2>` --> `minhavm2`
+====
+
+== Variáveis do Grupo
+
+As variáveis do grupo `webservers` ficam em `inventory/group_vars/webservers.yml`:
+
+[source,yaml]
+----
+nginx_enable_official_repo: false
+nginx_port: 80
+----
+
+Essas variáveis controlam:
+
+* `nginx_enable_official_repo` -- se `false`, instala o nginx do repositório padrão do CentOS. Se `true`, adiciona o repositório oficial do nginx.org.
+* `nginx_port` -- porta em que o nginx vai escutar. Padrão: `80`.
+
+== Testando o Inventário
+
+Verifique se o Ansible consegue se conectar:
+
+[source,bash]
+----
+ansible webservers -m ping -K
+----
+
+Você deve ver uma resposta `SUCCESS` em verde:
+
+[source]
+----
+vm2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+----
+
+[WARNING]
+====
+Se o comando falhar, verifique:
+
+* O IP esta correto?
+* As credenciais estão corretas?
+* O SSH esta acessível na VM 2?
+====

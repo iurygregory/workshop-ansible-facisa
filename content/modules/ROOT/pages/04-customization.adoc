@@ -1,0 +1,43 @@
+= Personalizando o nginx
+
+Agora vem a parte divertida! Vamos alterar a versão e a porta do Nginx e observar como a página web muda.
+
+== Cenário 1: Porta Padrão + Versão Padrão do SO
+
+Este é o estado inicial. A página Web mostra a imagem `default.png`.
+
+[source,bash]
+----
+ansible-playbook playbooks/site.yml
+----
+
+Acesse no browser do computador: `http://<IP_DA_VM2>:80`
+
+Resultado esperado: imagem padrão.
+
+== Cenário 2: Porta Customizada + Versão Padrão do SO
+
+Mude a porta onde o Nginx deve rodar.
+
+Acesse no browser do computador: `http://<IP_DA_VM2>:<NOVA_PORTA>`
+
+Resultado esperado: mensagem de aviso pedindo para instalar a versão mais recente do Nginx a partir do repositório oficial.
+
+
+== Cenário 3: Porta Customizada + Versão mais recente obtiva pelo repositório oficial.
+
+Agora ative o repositório oficial do nginx.org e mantenha a porta customizada.
+
+Acesse no browser do computador: `http://<IP_DA_VM2>:<NOVA_PORTA>`
+
+Resultado esperado: mensagem de parabéns com a imagem `latest.png`.
+
+
+== Extras 
+
+Tente as seguintes combinações e observe o resultado:
+
+1. Volte para a porta padrão mantendo o repositório oficial
+2. Use a porta 9090 sem o repositório oficial
+3. Use a porta 443 com o repositório oficial
+

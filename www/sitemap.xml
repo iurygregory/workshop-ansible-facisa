@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://iurygregory.github.io/workshop-ansible-ifpb/workshop-ansible-ifpb/01-setup.html</loc>
+<lastmod>2026-10-19T01:44:57.444Z</lastmod>
+</url>
+<url>
+<loc>https://iurygregory.github.io/workshop-ansible-ifpb/workshop-ansible-ifpb/02-inventory.html</loc>
+<lastmod>2026-10-19T01:44:57.444Z</lastmod>
+</url>
+<url>
+<loc>https://iurygregory.github.io/workshop-ansible-ifpb/workshop-ansible-ifpb/03-playbook.html</loc>
+<lastmod>2026-10-19T01:44:57.444Z</lastmod>
+</url>
+<url>
+<loc>https://iurygregory.github.io/workshop-ansible-ifpb/workshop-ansible-ifpb/04-customization.html</loc>
+<lastmod>2026-10-19T01:44:57.444Z</lastmod>
+</url>
+<url>
+<loc>https://iurygregory.github.io/workshop-ansible-ifpb/workshop-ansible-ifpb/index.html</loc>
+<lastmod>2026-10-19T01:44:57.444Z</lastmod>
+</url>
+</urlset>

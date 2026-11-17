@@ -1,0 +1,98 @@
+= Preparando o Ambiente
+
+Antes de começar, precisamos garantir que o ambiente está pronto.
+
+== Pré-requisitos
+
+* Acesso SSH à VM 1 (control node) para a VM 2 (managed node)
+* CentOS Stream 10 em ambas as VMs
+
+== Configurando SSH nas VMs
+
+Conecte-se à VM1 para criar uma chave SSH, em seguida copie
+a chave para a VM2.
+
+[source,bash]
+----
+ssh-keygen
+ssh-copy-id <usuário> @ <IP-VM2>
+----
+
+[DICA]
+====
+Ao rodar o `ssh-keygen` não precisa informar o nome da chave e nem senha.
+
+[source,bash]
+----
+ssh-keygen
+----
+====
+
+[DICA]
+====
+Para saber os IPs de cada máquina virtual utilize o comando abaixo:
+
+[source,bash]
+----
+ip -c a
+----
+====
+
+
+== Testando a Conectividade
+
+Verifique se a VM 1 consegue acessar a VM 2:
+
+[source,bash]
+----
+ping <IP_DA_VM2>
+----
+
+Teste o acesso SSH:
+
+[source,bash]
+----
+ssh <usuario>@<IP_DA_VM2> -- "echo "SSH para a VM2 Funcionou!" > ~/feedback; cat ~/feedback"
+----
+
+== Instalando o Ansible e Git na VM 1
+
+Ainda conectado à VM1, execute:
+
+[source,bash]
+----
+sudo dnf install -y ansible-core git
+----
+
+Caso esteja enfrentando problemas para instalar ansible com o comando anterior, utilize o seguinte método:
+
+- Crie um ambiente virtual:
+
+[source,bash]
+----
+python3 -m venv ansible
+----
+
+- Instale ansible utilizando o pacote pip:
+
+[source,bash]
+----
+source ansible/bin/activate
+pip install ansible-core ansible
+----
+
+Verifique a instalação:
+
+[source,bash]
+----
+ansible --version
+git --version
+----
+
+== Clonando o Repositório
+
+[source,bash]
+----
+git clone https://github.com/iurygregory/workshop-ansible-facisa.git
+cd workshop-ansible-facisa
+----
